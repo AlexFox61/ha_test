@@ -1,0 +1,7 @@
+binary_sensor.door_window_sensor_158d0001193697:
+  friendly_name: Окно
+  device_class: window
+  
+binary_sensor.door_window_sensor_158d0001583c7b:
+  friendly_name: Окно
+  device_class: door

@@ -1,0 +1,102 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude_coord
+  longitude: !secret longitude_coord
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Kiev
+  # Customization file
+  customize: !include customize.yaml
+  auth_providers:
+   - type: homeassistant
+   - type: legacy_api_password
+     api_password: !secret http_password
+  
+  whitelist_external_dirs :
+   - /config
+# Configure a default setup of Home Assistant (frontend, api, etc)
+default_config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+lovelace:
+  mode: yaml
+# Text to speech
+tts:
+  - platform: google_translate
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+
+  
+panel_iframe:
+  configurator:
+    title: Конфигуратор
+    icon: mdi:wrench
+    url: http://192.168.0.72:8123/api/hassio_ingress/lpBlA9fkBThITP3zP4XGcrFt8jRO3qaA0dSMcL_QgJg/
+    
+xiaomi_aqara:
+  discovery_retry: 10
+  gateways:
+    - mac: F0:B4:29:CC:1F:11
+      key: !secret gateway1_api
+      host: 192.168.0.80
+    - mac: 28:6C:07:F0:AD:27
+      key: !secret gateway2_api
+      host: 192.168.0.81
+
+camera:
+  - platform: generic
+    name: Reolink
+    still_image_url: !secret reolink1_url
+    stream_source: !secret reolink1_rtsp
+
+      
+switch:
+  - platform: sonoff_lan_mode_r3
+    name: sonoff_mini
+    device_id: 1000985173
+    icon: mdi:electric-switch
+
+yeelight:
+  devices:
+      
+      192.168.0.105:
+        name: yeelight_01_whitebulb
+        transition: 1000
+  
+      192.168.0.110:
+        name: yeelight_05_rgbtvbulb
+        transition: 1000
+        model: color1
+
+
+mqtt:
+  broker: core-mosquitto
+  username: mqtt
+  password: mqtt
+
+       
+sensor:
+
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+
+  - platform: filesize
+    file_paths:
+       - /config/home-assistant_v2.db
+
+  - platform: systemmonitor
+    resources:
+    - type: processor_use
+    - type: memory_use_percent
