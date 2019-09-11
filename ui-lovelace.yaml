@@ -94,6 +94,8 @@ views:
               name: Настольная лампа
               icon: mdi:desk-lamp
               secondary_info: last-changed
+            - entity: sensor.sonoff_mini_info
+              name: Sonoff mini
 
       - type: vertical-stack
         cards:

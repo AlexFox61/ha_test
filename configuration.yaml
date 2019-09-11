@@ -38,13 +38,6 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 
 
-  
-panel_iframe:
-  configurator:
-    title: Конфигуратор
-    icon: mdi:wrench
-    url: http://192.168.0.72:8123/api/hassio_ingress/lpBlA9fkBThITP3zP4XGcrFt8jRO3qaA0dSMcL_QgJg/
-    
 xiaomi_aqara:
   discovery_retry: 10
   gateways:
@@ -54,6 +47,12 @@ xiaomi_aqara:
     - mac: 28:6C:07:F0:AD:27
       key: !secret gateway2_api
       host: 192.168.0.81
+    - mac: 34:CE:00:88:B0:39
+      key: !secret gateway3_api
+      host: 192.168.0.82
+    - mac: 78:11:DC:64:F4:C8
+      key: !secret gateway4_api
+      host: 192.168.0.83
 
 camera:
   - platform: generic
@@ -74,7 +73,12 @@ yeelight:
       192.168.0.105:
         name: yeelight_01_whitebulb
         transition: 1000
-  
+
+      192.168.0.106:
+        name: yeelight_02_ceiling
+        transition: 1000
+        model: ceiling1
+        
       192.168.0.110:
         name: yeelight_05_rgbtvbulb
         transition: 1000
@@ -102,3 +106,17 @@ sensor:
     resources:
     - type: processor_use
     - type: memory_use_percent
+
+  - platform: rest
+    name: sonoff_mini_info
+    resource: http://192.168.0.204:8081/zeroconf/signal_strength
+    method: POST
+    payload: '{"deviceid": "1000985173", "data":"{}" }'
+    value_template: '{{ value_json.data }}'
+    json_attributes:
+      - data
+
+
+
+
+    
