@@ -4,14 +4,15 @@ views:
   - title: Главная
     id: main
     icon: mdi:home-assistant
-
+    
 #    badges:
 #      - sensor.time
 #      - sensor.date
 #      - sensor.home_assistant_v2_db
 
+
     cards:
-    
+
       - type: vertical-stack
         cards:
 
@@ -40,7 +41,7 @@ views:
               service_data:
                 keep_days: 1
                 repack: true
-
+                
         - type: horizontal-stack
           cards:
 
@@ -60,7 +61,8 @@ views:
             severity:
                green: 0
                yellow: 60
-               red: 85  
+               red: 85 
+
 
       - type: vertical-stack
         cards:
@@ -74,6 +76,7 @@ views:
           - type: light
             entity: light.yeelight_05_rgbtvbulb
             name: Гостиная
+
 
         - type: entities
           title: Выключатели
@@ -94,7 +97,7 @@ views:
 
       - type: vertical-stack
         cards:
-  
+
         - type: horizontal-stack
           cards:
           - type: gauge
@@ -136,13 +139,13 @@ views:
 
   - title: Панель управления
     id: control
-    icon: mdi:keyboard
- 
+    icon: mdi:keyboard    
+    
     cards:
     
       - type: vertical-stack
         cards:
-  
+
         - type: horizontal-stack
           cards:   
           - type: entity-button
@@ -160,7 +163,6 @@ views:
             name: Настольная лампа
             icon: mdi:desk-lamp
 
- 
         - type: conditional
           conditions:
            - entity: switch.plug_158d000114a1e1
@@ -191,27 +193,16 @@ views:
               secondary_info: last-changed
           state_filter:
                 - "on"  
-                
-        - type: entity-filter
-          entities:
-            - entity: binary_sensor.door_window_sensor_158d0001193697
-              name: Окно балкон
-            - entity: binary_sensor.door_window_sensor_158d0001583c7b
-              name: Дверь балкон
-            - entity: binary_sensor.door_window_sensor_158d00015843d4
-              name: Дверь вход
-            - entity: binary_sensor.door_window_sensor_158d0001a20885
-              name: Дверь вход             
-          state_filter:
-                - "on"
-          card:
-            type: glance
-            show_state: false
-            title: Открытые окна и двери
 
       - type: vertical-stack
         cards:
-
+ 
+        - type: picture-entity
+          name: Этаж, выход к лифту
+          entity: camera.reolink
+          camera_view: live 
+          show_state: false
+          
         - type: picture-glance
           title: Этаж, выход к лифту
           camera_image: camera.reolink
@@ -219,8 +210,7 @@ views:
           entities:
            - entity: light.yeelight_01_whitebulb
              icon: mdi:lightbulb
-
-          
+             
   - title: Тренды
     id: data
     icon: mdi:chart-gantt
@@ -234,7 +224,7 @@ views:
           title: 'Давление'
           entities:
               - sensor.pressure_158d0001fa8321
-
+              
         - type: history-graph
           title: 'Изменение температуры'
           entities:
@@ -242,7 +232,6 @@ views:
                 name: Комната
               - entity: sensor.temperature_158d000171ffde
                 name: Коридор
-
 
       - type: vertical-stack
         cards:
@@ -253,8 +242,8 @@ views:
           graph: line
 
         - type: weather-forecast
-          entity: weather.home      
-
+          entity: weather.home  
+          
       - type: vertical-stack
         cards:          
 
@@ -273,7 +262,6 @@ views:
         - type: markdown
           content: >
              [Ссылка](https://www.home-assistant.io)
-
 
         - type: glance
           title: Сенсоры протечки
@@ -303,3 +291,22 @@ views:
                name: Туалет
              - entity: binary_sensor.water_leak_sensor_158d0002705b7b
                name: Ванная
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,5 +3,5 @@ binary_sensor.door_window_sensor_158d0001193697:
   device_class: window
   
 binary_sensor.door_window_sensor_158d0001583c7b:
-  friendly_name: Окно
+  friendly_name: Дверь
   device_class: door
