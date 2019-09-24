@@ -45,7 +45,7 @@
 
   - platform: template
     sensors:
-      money_month_158d0001291d12:
+      money_month_01_zigbee_tv:
         friendly_name: "Стоимость за текущий месяц"
         unit_of_measurement: 'грн'
         value_template: "{{ (states.sensor.mqtt_power_month_01_zigbee_tv.state | float * 1.68)|round(2) }}"
@@ -53,7 +53,7 @@
     
   - platform: template
     sensors:
-      money_lastmonth_158d0001291d12:
+      money_lastmonth_01_zigbee_tv:
         friendly_name: "Стоимость за прошлый месяц"
         unit_of_measurement: 'грн'
         value_template: "{{ (states.sensor.mqtt_power_lastmonth_01_zigbee_tv.state | float * 1.68)|round(2) }}"
