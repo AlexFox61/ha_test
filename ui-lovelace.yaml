@@ -41,7 +41,7 @@ views:
               service_data:
                 keep_days: 1
                 repack: true
-                
+
         - type: horizontal-stack
           cards:
 
@@ -82,6 +82,8 @@ views:
           title: Выключатели
           show_header_toggle: false
           entities:
+            - entity: light.yeelight_02_ceiling
+              name: Yeelight 320        
             - entity: switch.plug_158d00010ec4b8
               name: Увлажнитель воздуха
               icon: mdi:air-humidifier
@@ -94,8 +96,8 @@ views:
               name: Настольная лампа
               icon: mdi:desk-lamp
               secondary_info: last-changed
-            - entity: sensor.sonoff_mini_info
-              name: Sonoff mini
+              
+
 
       - type: vertical-stack
         cards:
@@ -131,13 +133,7 @@ views:
                name: Дверь
              - entity: binary_sensor.water_leak_sensor_158d0001bb60c2
                name: Протечка
-             - entity: switch.sonoff_mini
-               name: Подсветка
-               icon: mdi:lightbulb
-               tap_action:
-                   action: toggle
-               hold_action: 
-                   action: more-info
+
 
   - title: Панель управления
     id: control
@@ -156,14 +152,19 @@ views:
             icon: mdi:air-humidifier
             
           - type: entity-button
-            entity: switch.plug_158d000114a1e1
-            name: Вентилятор
-            icon: mdi:fan
+            entity: switch.xiaomi_euro
+            name: Xiaomi Euro
+            icon: mdi:power-socket-eu
           
           - type: entity-button
             entity:  switch.plug_158d00030a6e78
             name: Настольная лампа
             icon: mdi:desk-lamp
+            
+            
+            
+            
+            
 
         - type: conditional
           conditions:
@@ -200,19 +201,13 @@ views:
         cards:
  
         - type: picture-entity
-          name: Этаж, выход к лифту
-          entity: camera.reolink
+#          name: Этаж, выход к лифту
+          entity: camera.reolink1
           camera_view: live 
           show_state: false
-          
-        - type: picture-glance
-          title: Этаж, выход к лифту
-          camera_image: camera.reolink
-          camera_view: live
-          entities:
-           - entity: light.yeelight_01_whitebulb
-             icon: mdi:lightbulb
-             
+          show_name: false 
+ 
+
   - title: Тренды
     id: data
     icon: mdi:chart-gantt

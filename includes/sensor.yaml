@@ -1,0 +1,61 @@
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+
+  - platform: filesize
+    file_paths:
+       - /config/home-assistant_v2.db
+
+  - platform: systemmonitor
+    resources:
+    - type: processor_use
+    - type: memory_use_percent
+    
+### Энергомониторинг
+
+  - platform: template
+    sensors:
+      load_01_zigbee_tv:
+        friendly_name: 'Телевизор'
+        value_template: "{{ state_attr('switch.plug_158d0001fa2934', 'load_power') }}"
+        icon_template: mdi:flash
+        unit_of_measurement: 'Вт'
+        entity_id: switch.plug_158d0001fa2934
+
+  - platform: mqtt
+    state_topic: "power/01_zigbee_tv/yesterday"
+    name: 'mqtt_power_yesterday_01_zigbee_tv'
+    unit_of_measurement: 'кВт⋅ч'
+        
+  - platform: mqtt
+    state_topic: "power/01_zigbee_tv/today"
+    name: 'mqtt_power_today_01_zigbee_tv'
+    unit_of_measurement: 'кВт⋅ч'
+
+  - platform: mqtt
+    state_topic: "power/01_zigbee_tv/month"
+    name: 'mqtt_power_month_01_zigbee_tv'
+    unit_of_measurement: 'кВт⋅ч'
+    
+  - platform: mqtt
+    state_topic: "power/01_zigbee_tv/lastmonth"
+    name: 'mqtt_power_lastmonth_01_zigbee_tv'
+    unit_of_measurement: 'кВт⋅ч'
+
+  - platform: template
+    sensors:
+      money_month_158d0001291d12:
+        friendly_name: "Стоимость за текущий месяц"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.mqtt_power_month_01_zigbee_tv.state | float * 1.68)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+    
+  - platform: template
+    sensors:
+      money_lastmonth_158d0001291d12:
+        friendly_name: "Стоимость за прошлый месяц"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.mqtt_power_lastmonth_01_zigbee_tv.state | float * 1.68)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+

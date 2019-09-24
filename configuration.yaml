@@ -36,7 +36,7 @@ tts:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
-
+sensor: !include includes/sensor.yaml
 
 xiaomi_aqara:
   discovery_retry: 10
@@ -59,13 +59,11 @@ camera:
     name: Reolink
     still_image_url: !secret reolink1_url
     stream_source: !secret reolink1_rtsp
-
-      
-switch:
-  - platform: sonoff_lan_mode_r3
-    name: sonoff_mini
-    device_id: 1000985173
-    icon: mdi:electric-switch
+    
+  - platform: generic
+    name: Reolink1
+    still_image_url: !secret reolink11_url
+    stream_source: !secret reolink11_rtsp
 
 yeelight:
   devices:
@@ -78,7 +76,12 @@ yeelight:
         name: yeelight_02_ceiling
         transition: 1000
         model: ceiling1
-        
+
+      192.168.0.109:
+        name: yeelight_05_ceiling2
+        transition: 1000
+        model: ceiling4
+
       192.168.0.110:
         name: yeelight_05_rgbtvbulb
         transition: 1000
@@ -91,30 +94,15 @@ mqtt:
   password: mqtt
 
        
-sensor:
+switch:
 
-  - platform: time_date
-    display_options:
-      - 'time'
-      - 'date'
+  - platform: xiaomi_miio
+    name: xiaomi_euro
+    host: 192.168.0.99
+    token: b4d9471bf9f6db8c40014efc41392f48
+    model: chuangmi.plug.m1 
 
-  - platform: filesize
-    file_paths:
-       - /config/home-assistant_v2.db
 
-  - platform: systemmonitor
-    resources:
-    - type: processor_use
-    - type: memory_use_percent
-
-  - platform: rest
-    name: sonoff_mini_info
-    resource: http://192.168.0.204:8081/zeroconf/signal_strength
-    method: POST
-    payload: '{"deviceid": "1000985173", "data":"{}" }'
-    value_template: '{{ value_json.data }}'
-    json_attributes:
-      - data
 
 
 
