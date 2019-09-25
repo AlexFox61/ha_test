@@ -3,6 +3,12 @@
       - 'time'
       - 'date'
 
+  - platform: google_fit
+    name: Alex
+    client_id: !secret google_fit_client_id
+    client_secret: !secret google_fit_client_secret
+
+
   - platform: filesize
     file_paths:
        - /config/home-assistant_v2.db

@@ -16,6 +16,24 @@ views:
       - type: vertical-stack
         cards:
 
+        - type: markdown
+          content: >
+             **Google Fit Alex**
+
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.alex_steps
+            name: Активность сегодня - 
+          - entity: sensor.alex_distance
+            name: Расстояние - 
+          - entity: sensor.alex_move_time
+            name: Время в движении -            
+          - entity: sensor.alex_heartrate
+            name: Пульс - 
+          - entity: sensor.alex_sleep
+            name: Сон - 
+
         - type: entities
           title: Система
           show_header_toggle: false
