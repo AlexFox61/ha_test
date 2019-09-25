@@ -13,7 +13,6 @@
     - type: memory_use_percent
     
 ### Энергомониторинг
-
   - platform: template
     sensors:
       load_01_zigbee_tv:
