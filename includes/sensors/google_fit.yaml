@@ -5,7 +5,7 @@
     client_id: !secret google_fit_client_id
     client_secret: !secret google_fit_client_secret
 
-# Расчет остатка шагов от нормы
+# Защита от провалов в статистике шагов
   - platform: template
     sensors:
       alex_steps_custom:
