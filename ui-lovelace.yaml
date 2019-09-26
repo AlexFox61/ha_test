@@ -23,16 +23,15 @@ views:
         - type: entities
           show_header_toggle: false
           entities:
-          - entity: sensor.alex_steps
-            name: Активность сегодня - 
+          - entity: sensor.alex_steps_custom
+          - entity: sensor.alex_steps_remain
           - entity: sensor.alex_distance
-            name: Расстояние - 
-          - entity: sensor.alex_move_time
-            name: Время в движении -            
+          - entity: sensor.alex_move_time_custom
           - entity: sensor.alex_heartrate
-            name: Пульс - 
+          - entity: sensor.alex_heartrate_update           
           - entity: sensor.alex_sleep
-            name: Сон - 
+          - entity: sensor.alex_weight
+          - entity: sensor.alex_weight_update
 
         - type: entities
           title: Система

@@ -1,0 +1,13 @@
+  - platform: time_date
+    display_options:
+      - 'time'
+      - 'date'
+
+  - platform: filesize
+    file_paths:
+       - /config/home-assistant_v2.db
+
+  - platform: systemmonitor
+    resources:
+    - type: processor_use
+    - type: memory_use_percent
