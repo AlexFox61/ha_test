@@ -23,7 +23,7 @@ views:
         - type: entities
           show_header_toggle: false
           entities:
-          - entity: sensor.alex_steps_custom
+          - entity: sensor.alex_steps
           - entity: sensor.alex_steps_remain
           - entity: sensor.alex_distance
           - entity: sensor.alex_move_time_custom
