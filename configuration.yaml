@@ -75,6 +75,7 @@ yeelight:
       192.168.0.106:
         name: yeelight_02_ceiling
         transition: 1000
+        nightlight_switch_type: light
         model: ceiling1
 
       192.168.0.109:
@@ -86,7 +87,6 @@ yeelight:
         name: yeelight_05_rgbtvbulb
         transition: 1000
         model: color1
-
 
 mqtt:
   broker: core-mosquitto
@@ -101,7 +101,6 @@ switch:
     host: 192.168.0.99
     token: b4d9471bf9f6db8c40014efc41392f48
     model: chuangmi.plug.m1 
-
 
 
 

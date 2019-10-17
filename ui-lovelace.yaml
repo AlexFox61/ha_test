@@ -100,7 +100,9 @@ views:
           show_header_toggle: false
           entities:
             - entity: light.yeelight_02_ceiling
-              name: Yeelight 320        
+              name: Yeelight 320 main
+            - entity: light.yeelight_02_ceiling_nightlight
+              name: Yeelight 320 night
             - entity: switch.plug_158d00010ec4b8
               name: Увлажнитель воздуха
               icon: mdi:air-humidifier
@@ -113,8 +115,7 @@ views:
               name: Настольная лампа
               icon: mdi:desk-lamp
               secondary_info: last-changed
-              
-
+            - entity: script.01_sound_check
 
       - type: vertical-stack
         cards:
