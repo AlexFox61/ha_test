@@ -1,0 +1,4 @@
+  - platform: clear_grass
+    name: airdetector
+    host: 192.168.0.142
+    token: 5233595a56594a4e55724b4967513542
