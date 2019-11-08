@@ -6,7 +6,7 @@
       - day
       - evening
       - night
-    
+
   monthly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: monthly

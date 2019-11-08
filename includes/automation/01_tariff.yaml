@@ -1,4 +1,5 @@
-tariff_change:
+- alias: tariff_change
+  initial_state: true
   trigger:
     - platform: time
       at: '09:00:00'

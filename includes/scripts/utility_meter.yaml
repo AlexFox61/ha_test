@@ -1,12 +1,3 @@
-utility_meter_reset:
-  sequence:
-   - service: utility_meter.reset
-     data: 
-       entity_id:
-        - utility_meter.daily_158d0001fa2934
-        - utility_meter.daily_wifi_6port
-
-        
 utility_next_tariff:
   sequence:
    - service: utility_meter.next_tariff
@@ -43,3 +34,15 @@ utility_night_tariff:
         - utility_meter.monthly_wifi_6port
         - utility_meter.yearly_wifi_6port
        tariff: night
+       
+utility_meter_reset:
+  sequence:
+   - service: utility_meter.reset
+     data: 
+       entity_id:
+        - utility_meter.daily_158d0001fa2934
+        - utility_meter.daily_wifi_6port
+        
+        
+        
+        

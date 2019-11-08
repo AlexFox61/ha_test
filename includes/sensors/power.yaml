@@ -7,7 +7,7 @@
         icon_template: mdi:flash
         unit_of_measurement: 'кВт'
         entity_id: switch.plug_158d0001fa2934
-
+        
 ## Wi-fi        
   - platform: template
     sensors:

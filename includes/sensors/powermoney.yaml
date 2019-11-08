@@ -5,7 +5,7 @@
         unit_of_measurement: 'грн'
         value_template: "{{ (states.sensor.yearly_158d0001fa2934_day.state | float * 1.68)|round(2) }}"
         icon_template: mdi:square-inc-cash 
-        
+
   - platform: template
     sensors:
       money_yearly_158d0001fa2934_evening:
