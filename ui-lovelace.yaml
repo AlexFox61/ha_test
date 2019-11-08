@@ -18,23 +18,27 @@ views:
 
         - type: markdown
           content: >
-             **Google Fit Alex**
-
+             **Состояние сервера**
+    
         - type: entities
           show_header_toggle: false
           entities:
-          - entity: sensor.alex_steps
-          - entity: sensor.alex_steps_remain
-          - entity: sensor.alex_distance
-          - entity: sensor.alex_move_time_custom
-          - entity: sensor.alex_heartrate
-          - entity: sensor.alex_heartrate_update           
-          - entity: sensor.alex_sleep
-          - entity: sensor.alex_weight
-          - entity: sensor.alex_weight_update
+          - entity: sensor.last_boot_custom
+            name: Сервер в онлайне -
+            icon: mdi:av-timer
+          - entity: sensor.online_custom
+            name: Home Assistant в онлайне -
+            icon: mdi:clock
+          - type: divider
+          - entity: sensor.current_ha
+            name: Установлен Home Assistant -
+            icon: mdi:alpha-v-circle
+          - entity: sensor.version
+            name: Последний Home Assistant -
+            icon: mdi:alpha-v-circle-outline
+
 
         - type: entities
-          title: Система
           show_header_toggle: false
           entities:
             - entity: sensor.time
@@ -46,9 +50,13 @@ views:
               icon: mdi:calendar
               secondary_info: entity-id
             - entity: sensor.home_assistant_v2_db
-              name: Объем базы данных - 
+              name: Объем базы данных HA - 
               icon: mdi:database
               secondary_info: entity-id
+            - entity: sensor.maria_db_size
+              name: Объем базы данных Maria - 
+              icon: mdi:database
+              secondary_info: entity-id              
             - type: divider            
             - type: call-service
               icon: mdi:database-minus
@@ -58,6 +66,14 @@ views:
               service_data:
                 keep_days: 1
                 repack: true
+
+
+      - type: vertical-stack
+        cards:
+
+        - type: markdown
+          content: >
+               **Система**   
 
         - type: horizontal-stack
           cards:
@@ -80,151 +96,118 @@ views:
                yellow: 60
                red: 85 
 
-
-      - type: vertical-stack
-        cards:
-
-        - type: horizontal-stack
-          cards:
-
-          - type: light
-            entity: light.yeelight_01_whitebulb
-            name: Прихожая
-          - type: light
-            entity: light.yeelight_05_rgbtvbulb
-            name: Гостиная
-
-
+        - type: markdown
+          content: >
+               **Cостояние серверов**   
         - type: entities
-          title: Выключатели
           show_header_toggle: false
           entities:
-            - entity: light.yeelight_02_ceiling
-              name: Yeelight 320 main
-            - entity: light.yeelight_02_ceiling_nightlight
-              name: Yeelight 320 night
-            - entity: switch.plug_158d00010ec4b8
-              name: Увлажнитель воздуха
-              icon: mdi:air-humidifier
-              secondary_info: last-changed
-            - entity: switch.plug_158d000114a1e1
-              name: Вентилятор
-              icon: mdi:fan
-              secondary_info: last-changed
-            - entity: switch.plug_158d00030a6e78
-              name: Настольная лампа
-              icon: mdi:desk-lamp
-              secondary_info: last-changed
-            - entity: script.01_sound_check
+          - entity: sensor.main_state
+            name: Raspberry Pi 3 B+ в онлайне -
+            icon: mdi:clock-outline
+          - entity: sensor.reserve_state
+            name: Khadas VIM2 в онлайне -
+            icon: mdi:clock-outline
 
       - type: vertical-stack
         cards:
 
-        - type: horizontal-stack
-          cards:
-          - type: gauge
-            name: Температура
-            unit: 'C'
-            min: 10
-            max: 35
-            entity: sensor.temperature_158d0001fa8321
- 
-          - type: gauge
-            name: Влажность
-            unit: '%'
-            min: 20
-            max: 80
-            entity: sensor.humidity_158d0001fa8321
+        - type: markdown
+          content: >
+           **База, резервное копирование**
 
-          
-        - type: glance
-          title: Сенсоры
-          show_state: false
+        - type: entities
+          show_header_toggle: false
           entities:
-             - entity: binary_sensor.motion_sensor_158d0001a66222
-               name: Комната
-             - entity: binary_sensor.motion_sensor_158d0001e16204
-               name: Коридор
-             - entity: binary_sensor.door_window_sensor_158d0001193697
-               name: Окно
-             - entity: binary_sensor.door_window_sensor_158d0001583c7b
-               name: Дверь
-             - entity: binary_sensor.water_leak_sensor_158d0001bb60c2
-               name: Протечка
+            - entity: script.ha_backup
+              name: Снапшот
+              icon: mdi:backup-restore 
+            - entity: counter.backup_stage
+              name: Фаза бэкапа - 
+            - entity: sensor.backup_phaze
+              name: Действие - 
+            - entity: timer.backup
+              name: Фаза завершается через - 
+            - entity: sensor.last_google_backup
+              icon: mdi:map-clock-outline
+            - entity: sensor.last_google_filecount
+              icon: mdi:file-search
+            - entity: sensor.last_google_alreadycount
+              icon: mdi:file-export
+            - entity: sensor.last_google_backedupcount
+              icon: mdi:google-plus-box
+            - entity: sensor.last_google_deletedcount
+              icon: mdi:file-remove
+            - entity: sensor.last_google_deletedfromgoogle
+              icon: mdi:folder-google-drive
 
 
-  - title: Панель управления
+  - title: Инфо
     id: control
-    icon: mdi:keyboard    
+    icon: mdi:information-variant  
     
     cards:
+
+      - type: vertical-stack
+        cards:
+
+        - type: markdown
+          content: >
+             **Растения**
+
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.yucca_light_intensity
+          - entity: sensor.yucca_moisture
+          - entity: sensor.yucca_temperature
+          - entity: sensor.yucca_conductivity
+          - entity: sensor.yucca_battery
+
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.dieffenbac_light_intensity
+          - entity: sensor.dieffenbac_moisture
+          - entity: sensor.dieffenbac_temperature
+          - entity: sensor.dieffenbac_conductivity
+          - entity: sensor.dieffenbac_battery
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.zamiokulkas_light_intensity
+          - entity: sensor.zamiokulkas_moisture
+          - entity: sensor.zamiokulkas_temperature
+          - entity: sensor.zamiokulkas_conductivity
+          - entity: sensor.zamiokulkas_battery
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.deep_purple_battery
+          - entity: sensor.true_blue_battery
     
       - type: vertical-stack
         cards:
 
-        - type: horizontal-stack
-          cards:   
-          - type: entity-button
-            entity: switch.plug_158d00010ec4b8
-            name: Увлажнитель
-            icon: mdi:air-humidifier
-            
-          - type: entity-button
-            entity: switch.xiaomi_euro
-            name: Xiaomi Euro
-            icon: mdi:power-socket-eu
-          
-          - type: entity-button
-            entity:  switch.plug_158d00030a6e78
-            name: Настольная лампа
-            icon: mdi:desk-lamp
-            
-            
-            
-            
-            
+        - type: markdown
+          content: >
+             **Google Fit Alex**
 
-        - type: conditional
-          conditions:
-           - entity: switch.plug_158d000114a1e1
-             state: "on"
-           - entity: switch.plug_158d00030a6e78
-             state_not: "off"
-          card:
-            type: glance
-            entities:
-             - entity: binary_sensor.motion_sensor_158d0001a66222
-               name: Комната
-             - entity: binary_sensor.motion_sensor_158d0001e16204
-               name: Коридор
-
-        - type: entity-filter
+        - type: entities
+          show_header_toggle: false
           entities:
-            - entity: switch.plug_158d00010ec4b8
-              name: Увлажнитель воздуха
-              icon: mdi:air-humidifier
-              secondary_info: last-changed
-            - entity: switch.plug_158d000114a1e1
-              name: Вентилятор
-              icon: mdi:fan
-              secondary_info: last-changed
-            - entity: switch.plug_158d00030a6e78
-              name: Настольная лампа
-              icon: mdi:desk-lamp
-              secondary_info: last-changed
-          state_filter:
-                - "on"  
+          - entity: sensor.alex_steps
+          - entity: sensor.alex_steps_remain
+          - entity: sensor.alex_distance
+          - entity: sensor.alex_move_time_custom
+          - entity: sensor.alex_heartrate
+          - entity: sensor.alex_heartrate_update 
+          - entity: sensor.alex_sleep
+          - entity: sensor.alex_weight
+          - entity: sensor.alex_weight_update
 
-      - type: vertical-stack
-        cards:
- 
-        - type: picture-entity
-#          name: Этаж, выход к лифту
-          entity: camera.reolink1
-          camera_view: live 
-          show_state: false
-          show_name: false 
- 
 
   - title: Тренды
     id: data
@@ -307,21 +290,157 @@ views:
              - entity: binary_sensor.water_leak_sensor_158d0002705b7b
                name: Ванная
 
+  - title: power
+    id: counter
+    icon: mdi:counter
 
+    cards:
 
+      - type: vertical-stack
+        cards:
 
+        - type: markdown
+          content: >
+             **Управление**
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.load_total_energy
+            name: Общее потребление
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: script.utility_next_tariff
+            name: Следующий тариф
+          - entity: script.utility_day_tariff
+            name: Тариф день
+          - entity: script.utility_night_tariff
+            name: Тариф ночь
+            
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: utility_meter.daily_158d0001fa2934
+            name: ZigBee Текущий тариф день
+          - entity: utility_meter.monthly_158d0001fa2934
+            name: ZigBee Текущий тариф месяц
+          - entity: utility_meter.monthly_158d0001fa2934
+            name: ZigBee Текущий тариф год
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: utility_meter.daily_wifi_6port
+            name: Wi-Fi Текущий тариф день
+          - entity: utility_meter.monthly_wifi_6port
+            name: Wi-Fi Текущий тариф месяц
+          - entity: utility_meter.monthly_wifi_6port
+            name: Wi-Fi Текущий тариф год
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: script.utility_meter_reset
+            name: Сброс счетчиков
 
+      - type: vertical-stack
+        cards:
 
+        - type: markdown
+          content: >
+             **ZigBee**
+             
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.load_158d0001fa2934
+            name: Текущее потребление
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.money_yearly_158d0001fa2934_day
+          - entity: sensor.money_yearly_158d0001fa2934_evening
+          - entity: sensor.money_yearly_158d0001fa2934_night
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_158d0001fa2934_day
+            name: По дневному тарифу за день - 
+          - entity: sensor.monthly_158d0001fa2934_day
+            name:  По дневному тарифу за месяц - 
+          - entity: sensor.yearly_158d0001fa2934_day
+            name: По дневному тарифу за год - 
+            
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_158d0001fa2934_evening
+            name: По вечернему тарифу за день - 
+          - entity: sensor.monthly_158d0001fa2934_evening
+            name:  По вечернему тарифу за месяц - 
+          - entity: sensor.yearly_158d0001fa2934_evening
+            name: По вечернему тарифу за год - 
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_158d0001fa2934_night
+            name: По ночному тарифу за день - 
+          - entity: sensor.monthly_158d0001fa2934_night
+            name:  По ночному тарифу за месяц - 
+          - entity: sensor.yearly_158d0001fa2934_night
+            name: По ночному тарифу за год - 
 
+      - type: vertical-stack
+        cards:
 
+        - type: markdown
+          content: >
+             **Wi-Fi**
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.load_wifi_6port
+            name: Текущее потребление
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.money_yearly_wifi_6port_day
+          - entity: sensor.money_yearly_wifi_6port_evening
+          - entity: sensor.money_yearly_wifi_6port_night
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_wifi_6port_day
+            name: По дневному тарифу за день - 
+          - entity: sensor.monthly_wifi_6port_day
+            name:  По дневному тарифу за месяц - 
+          - entity: sensor.yearly_wifi_6port_day
+            name: По дневному тарифу за год - 
+            
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_wifi_6port_evening
+            name: По вечернему тарифу за день - 
+          - entity: sensor.monthly_wifi_6port_evening
+            name:  По вечернему тарифу за месяц - 
+          - entity: sensor.yearly_wifi_6port_evening
+            name: По вечернему тарифу за год - 
 
-
-
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_wifi_6port_night
+            name: По ночному тарифу за день - 
+          - entity: sensor.monthly_wifi_6port_night
+            name:  По ночному тарифу за месяц - 
+          - entity: sensor.yearly_wifi_6port_night
+            name: По ночному тарифу за год - 

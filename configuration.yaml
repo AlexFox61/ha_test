@@ -19,6 +19,7 @@ homeassistant:
   
   whitelist_external_dirs :
    - /config
+
 # Configure a default setup of Home Assistant (frontend, api, etc)
 default_config:
 
@@ -33,10 +34,29 @@ lovelace:
 tts:
   - platform: google_translate
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+
+#Вынос в папки
 sensor: !include_dir_merge_list includes/sensors
+automation: !include_dir_merge_list includes/automation
+script: !include_dir_merge_named includes/scripts
+
+#Вынос в файлы
+yeelight: !include includes/yeelight.yaml
+recorder: !include includes/recorder.yaml
+notify: !include includes/notify.yaml
+rest_command: !include includes/rest_command.yaml
+timer: !include includes/timer.yaml
+counter: !include includes/counter.yaml
+utility_meter: !include includes/utility_meter.yaml
+switch: !include includes/switch.yaml
+
+
+telegram_bot:
+  - platform: polling
+    api_key: !secret api_key_71
+    allowed_chat_ids:
+      - !secret chat_id_alex
+      - !secret chat_id_olha
 
 xiaomi_aqara:
   discovery_retry: 10
@@ -54,53 +74,13 @@ xiaomi_aqara:
       key: !secret gateway4_api
       host: 192.168.0.83
 
-camera:
-  - platform: generic
-    name: Reolink
-    still_image_url: !secret reolink1_url
-    stream_source: !secret reolink1_rtsp
-    
-  - platform: generic
-    name: Reolink1
-    still_image_url: !secret reolink11_url
-    stream_source: !secret reolink11_rtsp
-
-yeelight:
-  devices:
-      
-      192.168.0.105:
-        name: yeelight_01_whitebulb
-        transition: 1000
-
-      192.168.0.106:
-        name: yeelight_02_ceiling
-        transition: 1000
-        nightlight_switch_type: light
-        model: ceiling1
-
-      192.168.0.109:
-        name: yeelight_05_ceiling2
-        transition: 1000
-        model: ceiling4
-
-      192.168.0.110:
-        name: yeelight_05_rgbtvbulb
-        transition: 1000
-        model: color1
 
 mqtt:
   broker: core-mosquitto
   username: mqtt
   password: mqtt
 
-       
-switch:
 
-  - platform: xiaomi_miio
-    name: xiaomi_euro
-    host: 192.168.0.99
-    token: b4d9471bf9f6db8c40014efc41392f48
-    model: chuangmi.plug.m1 
 
 
 

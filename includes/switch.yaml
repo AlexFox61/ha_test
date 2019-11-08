@@ -1,0 +1,5 @@
+  - platform: xiaomi_miio
+    name: wifi_6port
+    host: 192.168.0.95
+    token: 82dc0e63cd05e7d74b9065c0bc9e0556
+    model: zimi.powerstrip.v2

@@ -1,0 +1,19 @@
+## ZigBee
+  - platform: template
+    sensors:
+      load_158d0001fa2934:
+        friendly_name: 'zigbee'
+        value_template: "{{ (state_attr('switch.plug_158d0001fa2934', 'load_power') * 0.001) | round(6) }}"
+        icon_template: mdi:flash
+        unit_of_measurement: 'кВт'
+        entity_id: switch.plug_158d0001fa2934
+
+## Wi-fi        
+  - platform: template
+    sensors:
+      load_wifi_6port:
+        friendly_name: 'wi-fi'
+        value_template: "{{ (state_attr('switch.wifi_6port', 'load_power') * 0.001) | round(6)  }}"
+        icon_template: mdi:flash
+        unit_of_measurement: 'кВт'
+        entity_id: switch.wifi_6port

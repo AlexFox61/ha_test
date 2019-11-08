@@ -1,0 +1,17 @@
+tariff_change:
+  trigger:
+    - platform: time
+      at: '09:00:00'
+    - platform: time
+      at: '20:00:00'
+    - platform: time
+      at: '23:00:00'
+  action:
+   - service: utility_meter.next_tariff
+     entity_id: 
+        - utility_meter.daily_158d0001fa2934
+        - utility_meter.monthly_158d0001fa2934
+        - utility_meter.yearly_158d0001fa2934
+        - utility_meter.daily_wifi_6port
+        - utility_meter.monthly_wifi_6port
+        - utility_meter.yearly_wifi_6port

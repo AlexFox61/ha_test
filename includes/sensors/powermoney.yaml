@@ -1,0 +1,47 @@
+  - platform: template
+    sensors:
+      money_yearly_158d0001fa2934_day:
+        friendly_name: "Стоимость по дневному тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_158d0001fa2934_day.state | float * 1.68)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+        
+  - platform: template
+    sensors:
+      money_yearly_158d0001fa2934_evening:
+        friendly_name: "Стоимость по вечернему тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_158d0001fa2934_evening.state | float * 1.05)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+        
+  - platform: template
+    sensors:
+      money_yearly_158d0001fa2934_night:
+        friendly_name: "Стоимость по ночному тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_158d0001fa2934_night.state | float * 0.75)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+
+  - platform: template
+    sensors:
+      money_yearly_wifi_6port_day:
+        friendly_name: "Стоимость по дневному тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_wifi_6port_day.state | float * 1.68)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+        
+  - platform: template
+    sensors:
+      money_yearly_wifi_6port_evening:
+        friendly_name: "Стоимость по вечернему тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_wifi_6port_evening.state | float * 1.05)|round(2) }}"
+        icon_template: mdi:square-inc-cash 
+        
+  - platform: template
+    sensors:
+      money_yearly_wifi_6port_night:
+        friendly_name: "Стоимость по ночному тарифу за год -"
+        unit_of_measurement: 'грн'
+        value_template: "{{ (states.sensor.yearly_wifi_6port_night.state | float * 0.75)|round(2) }}"
+        icon_template: mdi:square-inc-cash 

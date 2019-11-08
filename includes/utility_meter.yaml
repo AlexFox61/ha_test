@@ -1,0 +1,49 @@
+## ZigBee
+  daily_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: daily
+    tariffs:
+      - day
+      - evening
+      - night
+    
+  monthly_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: monthly
+    tariffs:
+      - day
+      - evening
+      - night
+    
+  yearly_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: yearly
+    tariffs:
+      - day
+      - evening
+      - night
+
+## Wi-fi 
+  daily_wifi_6port:
+    source: sensor.load_wifi_6port
+    cycle: daily
+    tariffs:
+      - day
+      - evening
+      - night
+    
+  monthly_wifi_6port:
+    source: sensor.load_wifi_6port
+    cycle: monthly
+    tariffs:
+      - day
+      - evening
+      - night
+    
+  yearly_wifi_6port:
+    source: sensor.load_wifi_6port
+    cycle: yearly
+    tariffs:
+      - day
+      - evening
+      - night
