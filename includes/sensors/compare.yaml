@@ -1,0 +1,39 @@
+- platform: rest
+  resource: http://192.168.0.70:8123/api/states/sensor.mqtt_power_today_158d0001fa2934
+  name: main_today_158d0001fa2934
+  force_update: true
+  headers: 
+    Authorization: !secret main_secret_token
+    content-type: 'application/json'
+  value_template: '{{ value_json.state }}'
+  unit_of_measurement: 'кВт'
+  
+- platform: rest
+  resource: http://192.168.0.70:8123/api/states/sensor.mqtt_power_month_158d0001fa2934
+  name: main_month_158d0001fa2934
+  force_update: true
+  headers: 
+    Authorization: !secret main_secret_token
+    content-type: 'application/json'
+  value_template: '{{ value_json.state }}'
+  unit_of_measurement: 'кВт'
+  
+- platform: rest
+  resource: http://192.168.0.70:8123/api/states/sensor.load_158d0001fa2934
+  name: mqtt_load_158d0001fa2934
+  force_update: true
+  headers: 
+    Authorization: !secret main_secret_token
+    content-type: 'application/json'
+  value_template: '{{ value_json.state }}'
+  unit_of_measurement: 'Вт'
+  
+## Compare
+- platform: template
+  sensors:
+    load_compare_158d0001fa2934:
+      friendly_name: 'Compare'
+      value_template: "{{ state_attr('switch.plug_158d0001fa2934', 'load_power') }}"
+      icon_template: mdi:flash
+      unit_of_measurement: 'Вт'
+      entity_id: switch.plug_158d0001fa2934

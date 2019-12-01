@@ -4,24 +4,21 @@
     cycle: daily
     tariffs:
       - day
-      - evening
-      - night
+
 
   monthly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: monthly
     tariffs:
       - day
-      - evening
-      - night
+
     
   yearly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: yearly
     tariffs:
       - day
-      - evening
-      - night
+
 
 ## Wi-fi 
   daily_wifi_6port:
@@ -47,3 +44,18 @@
       - day
       - evening
       - night
+      
+## compare
+  daily_compare_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: daily
+
+  week_compare_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: weekly
+
+
+  monthly_compare_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
+    cycle: monthly
+

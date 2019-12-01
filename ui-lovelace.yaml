@@ -444,3 +444,97 @@ views:
             name:  По ночному тарифу за месяц - 
           - entity: sensor.yearly_wifi_6port_night
             name: По ночному тарифу за год - 
+            
+  - title: compare
+    id: counter
+    icon: mdi:compare
+
+    cards:
+
+      - type: vertical-stack
+        cards:
+
+        - type: markdown
+          content: >
+             **Потребление Вт**
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.load_compare_158d0001fa2934
+            name: Текущее потребление Вт
+
+        - type: markdown
+          content: >
+             **Utility meter Вт**
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_compare_158d0001fa2934
+            name: День
+
+            
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: >
+             **Потребление кВТ**
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.load_158d0001fa2934
+            name: Текущее потребление кВт
+
+        - type: markdown
+          content: >
+             **Utility meter кВт**
+
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.daily_158d0001fa2934_day
+            name: День
+
+      - type: vertical-stack
+        cards:
+        - type: markdown
+          content: >
+             **Потребление main Вт**
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.mqtt_load_158d0001fa2934
+            name: Текущее main потребление Вт
+
+        - type: markdown
+          content: >
+             **Mqtt**
+ 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: sensor.main_today_158d0001fa2934
+            name: День
+
+  - title: video
+    id: video
+    icon: mdi:cctv
+
+    cards:
+    
+        - type: picture-entity
+          entity: camera.xiaofang
+          camera_view: live 
+          show_state: false
+          show_name: false
+          
+        - type: entities
+          show_header_toggle: false
+          entities:
+            - entity: script.photo_xiaofang
+              icon: mdi:camera
+            - entity: script.video_xiaofang
+              icon: mdi:record-rec  
+
+                
+                

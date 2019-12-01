@@ -3,3 +3,8 @@
     host: 192.168.0.95
     token: 82dc0e63cd05e7d74b9065c0bc9e0556
     model: zimi.powerstrip.v2
+    
+#   - platform: xiaomi_miio
+#     name: 3_ptx
+#     host: 192.168.0.246
+#     token: 29f45a7f52beff726fb2a3f43435a6d1

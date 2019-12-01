@@ -1,0 +1,37 @@
+  photo_xiaofang:
+    alias: Фотография Xiaofang и отправка в телеграмм
+    sequence:
+       - service: notify.telegram
+         data:
+           message: "Фото сделано в  {{ states('sensor.time_date') }}" 
+       - service: camera.snapshot
+         data:
+              entity_id: camera.xiaofang
+              filename: "/config/www/cam_captures/xiaofang.jpg"
+       - delay: 00:00:05
+       - service: notify.telegram
+         data:
+              title: "Дверь"
+              message: "Фотография" 
+              data:
+                  photo:
+                      - file: /config/www/cam_captures/xiaofang.jpg
+
+
+  video_xiaofang:
+    alias: Видео Xiaofang и отправка в телеграмм
+    sequence:
+    - service: camera.record
+      data_template:
+        entity_id: camera.xiaofang
+        filename: "/config/www/cam_captures/xiaofang.mp4"
+        lookback: 5
+        duration: 15
+    - delay: 00:00:35
+    - service: telegram_bot.send_video
+      data_template:
+        target:
+         - !secret chat_id_alex
+        file: "/config/www/cam_captures/xiaofang.mp4"
+        caption: "Видео сделано в - {{ states('sensor.time_date') }}"
+

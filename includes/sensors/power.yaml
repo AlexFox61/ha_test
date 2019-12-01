@@ -17,3 +17,5 @@
         icon_template: mdi:flash
         unit_of_measurement: 'кВт'
         entity_id: switch.wifi_6port
+        
+
