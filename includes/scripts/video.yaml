@@ -31,7 +31,7 @@
         entity_id: camera.xiaofang
         filename: "/config/www/cam_captures/xiaofang.mp4"
         duration: 15
-    - delay: 00:00:05
+    - delay: 00:00:35
     - service: notify.telegram
       data:
            title: Video
