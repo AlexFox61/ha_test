@@ -88,10 +88,10 @@ camera:
     username: !secret reolink_name
     password: !secret reolink_pass
     port: 8000
-    
+
   - platform: ffmpeg
     name: xiaofang
-    input: -rtsp_transport tcp -i rtsp://192.168.0.166:8554/unicast
+    input: -rtsp_transport tcp -i rtsp://192.168.0.127:8554/unicast
 
 air_quality:
   - platform: xiaomi_miio
