@@ -534,7 +534,11 @@ views:
             - entity: script.photo_xiaofang
               icon: mdi:camera
             - entity: script.video_xiaofang
-              icon: mdi:record-rec  
+              icon: mdi:record-rec 
+            - entity: script.photo2_xiaofang
+              icon: mdi:camera
+            - entity: script.video2_xiaofang
+              icon: mdi:record-rec 
 
                 
                 
