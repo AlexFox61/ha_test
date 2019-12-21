@@ -38,6 +38,7 @@ tts:
 
 #Вынос в папки
 sensor: !include_dir_merge_list includes/sensors
+binary_sensor: !include_dir_merge_list includes/bin_sensor
 automation: !include_dir_merge_list includes/automation
 script: !include_dir_merge_named includes/scripts
 
@@ -77,9 +78,12 @@ xiaomi_aqara:
 
 
 mqtt:
-  broker: core-mosquitto
+  broker: 192.168.0.77
+  discovery: true
+  discovery_prefix: homeassistant
   username: mqtt
   password: mqtt
+
 
 camera:
   - platform: onvif
@@ -98,3 +102,9 @@ air_quality:
     name: 05_air_monitor
     host: 192.168.0.142
     token: 5233595a56594a4e55724b4967513542
+    
+remote:
+  - platform: broadlink
+    host: 192.168.0.247
+    mac: 24:DF:A7:42:C2:8D
+    name: rm_mini

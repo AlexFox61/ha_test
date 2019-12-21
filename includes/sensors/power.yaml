@@ -17,5 +17,14 @@
         icon_template: mdi:flash
         unit_of_measurement: 'кВт'
         entity_id: switch.wifi_6port
-        
+
+  - platform: template
+    sensors:
+      load_wifi_3usb:
+        friendly_name: 'Xiaomi wi-fi 3+3 USB'
+        value_template: "{{ state_attr('switch.wifi_3usb', 'load_power') }}"
+        icon_template: mdi:flash
+        unit_of_measurement: 'Вт'
+        entity_id: switch.wifi_3usb
+
 

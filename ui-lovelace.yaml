@@ -109,6 +109,16 @@ views:
             name: Khadas VIM2 в онлайне -
             icon: mdi:clock-outline
 
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: script.learn_broadlink
+          - entity: script.tv_vup_broadlink
+
+
+
+
+
       - type: vertical-stack
         cards:
 
@@ -208,6 +218,19 @@ views:
           - entity: sensor.alex_weight
           - entity: sensor.alex_weight_update
 
+      - type: vertical-stack
+        cards:
+
+        - type: markdown
+          content: >
+             **Тестовые сенсоры**
+             
+        - type: entities
+          show_header_toggle: false
+          entities:
+          - entity: binary_sensor.home_motion
+
+
 
   - title: Тренды
     id: data
@@ -290,9 +313,14 @@ views:
              - entity: binary_sensor.water_leak_sensor_158d0002705b7b
                name: Ванная
 
-  - title: power
-    id: counter
-    icon: mdi:counter
+        - type: entities
+          show_state: false
+          entities:
+             - entity: switch.wifi_3usb
+
+  - title: Mqtt
+    id: mqtt
+    icon: mdi:database-search
 
     cards:
 
@@ -301,150 +329,27 @@ views:
 
         - type: markdown
           content: >
-             **Управление**
+             **Резервный сервер**
  
         - type: entities
           show_header_toggle: false
           entities:
-          - entity: sensor.load_total_energy
-            name: Общее потребление
- 
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: script.utility_next_tariff
-            name: Следующий тариф
-          - entity: script.utility_day_tariff
-            name: Тариф день
-          - entity: script.utility_night_tariff
-            name: Тариф ночь
-            
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: utility_meter.daily_158d0001fa2934
-            name: ZigBee Текущий тариф день
-          - entity: utility_meter.monthly_158d0001fa2934
-            name: ZigBee Текущий тариф месяц
-          - entity: utility_meter.monthly_158d0001fa2934
-            name: ZigBee Текущий тариф год
+          - entity: script.telegramm_reserve_system
+            name: Отправить в Телеграмм
+          - entity: sensor.reserve_system_send
+            name: Последняя загрузка данных -
+          - entity: sensor.reserve_system_scenario
+            name: Активность сценариев - 
+          - entity: sensor.reserve_system_unavailable_now_light
+            name: Светильников недоступно - 
+          - entity: sensor.reserve_system_unavailable_now_switch
+            name: Выключателей недоступно - 
+          - entity: sensor.reserve_system_unavailable_now_sensor
+            name: Сенсоров недоступно - 
+          - entity: sensor.reserve_system_unavailable_now_binary_sensor
+            name: Бинарных сенсоров недоступно - 
 
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: utility_meter.daily_wifi_6port
-            name: Wi-Fi Текущий тариф день
-          - entity: utility_meter.monthly_wifi_6port
-            name: Wi-Fi Текущий тариф месяц
-          - entity: utility_meter.monthly_wifi_6port
-            name: Wi-Fi Текущий тариф год
 
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: script.utility_meter_reset
-            name: Сброс счетчиков
-
-      - type: vertical-stack
-        cards:
-
-        - type: markdown
-          content: >
-             **ZigBee**
-             
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.load_158d0001fa2934
-            name: Текущее потребление
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.money_yearly_158d0001fa2934_day
-          - entity: sensor.money_yearly_158d0001fa2934_evening
-          - entity: sensor.money_yearly_158d0001fa2934_night
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_158d0001fa2934_day
-            name: По дневному тарифу за день - 
-          - entity: sensor.monthly_158d0001fa2934_day
-            name:  По дневному тарифу за месяц - 
-          - entity: sensor.yearly_158d0001fa2934_day
-            name: По дневному тарифу за год - 
-            
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_158d0001fa2934_evening
-            name: По вечернему тарифу за день - 
-          - entity: sensor.monthly_158d0001fa2934_evening
-            name:  По вечернему тарифу за месяц - 
-          - entity: sensor.yearly_158d0001fa2934_evening
-            name: По вечернему тарифу за год - 
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_158d0001fa2934_night
-            name: По ночному тарифу за день - 
-          - entity: sensor.monthly_158d0001fa2934_night
-            name:  По ночному тарифу за месяц - 
-          - entity: sensor.yearly_158d0001fa2934_night
-            name: По ночному тарифу за год - 
-
-      - type: vertical-stack
-        cards:
-
-        - type: markdown
-          content: >
-             **Wi-Fi**
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.load_wifi_6port
-            name: Текущее потребление
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.money_yearly_wifi_6port_day
-          - entity: sensor.money_yearly_wifi_6port_evening
-          - entity: sensor.money_yearly_wifi_6port_night
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_wifi_6port_day
-            name: По дневному тарифу за день - 
-          - entity: sensor.monthly_wifi_6port_day
-            name:  По дневному тарифу за месяц - 
-          - entity: sensor.yearly_wifi_6port_day
-            name: По дневному тарифу за год - 
-            
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_wifi_6port_evening
-            name: По вечернему тарифу за день - 
-          - entity: sensor.monthly_wifi_6port_evening
-            name:  По вечернему тарифу за месяц - 
-          - entity: sensor.yearly_wifi_6port_evening
-            name: По вечернему тарифу за год - 
-
-        - type: entities
-          show_header_toggle: false
-          entities:
-          - entity: sensor.daily_wifi_6port_night
-            name: По ночному тарифу за день - 
-          - entity: sensor.monthly_wifi_6port_night
-            name:  По ночному тарифу за месяц - 
-          - entity: sensor.yearly_wifi_6port_night
-            name: По ночному тарифу за год - 
-            
   - title: compare
     id: counter
     icon: mdi:compare

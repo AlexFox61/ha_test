@@ -1,0 +1,5 @@
+  - platform: mqtt
+    name: mqtt_test
+    state_topic: "switches/test_mqtt"
+    payload_on: "ON"
+    payload_off: "OFF"

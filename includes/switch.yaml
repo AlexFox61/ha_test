@@ -4,7 +4,41 @@
     token: 82dc0e63cd05e7d74b9065c0bc9e0556
     model: zimi.powerstrip.v2
     
-#   - platform: xiaomi_miio
-#     name: 3_ptx
-#     host: 192.168.0.246
-#     token: 29f45a7f52beff726fb2a3f43435a6d1
+  - platform: xiaomi_miio
+    name: wifi_3usb
+    host: 192.168.0.101
+    token: 29eae10bd4d757528e31dc6a783ec2ee
+    model: qmi.powerstrip.v1
+
+  - platform: mqtt
+    name: test_mqtt
+    icon: mdi:light-switch
+    # state_topic: "switches/test_mqtt"
+    command_topic: "switches/test_mqtt/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    retain: true
+    
+  - platform: template
+    switches:
+      test_mqtt:
+        friendly_name: "MQTT test"
+        value_template: "{{  is_state('binary_sensor.mqtt_test', 'on') }}"
+        turn_on:
+          service: mqtt.publish
+          data_template:
+            topic: "switches/test_mqtt"
+            payload_template: 'ON'
+        turn_off:
+          service: mqtt.publish
+          data_template:
+            topic: "switches/test_mqtt"
+            payload_template: 'OFF'
+        icon_template: >-
+          {% if is_state('switch.heater_mode', 'on') %}
+            mdi:power-plug
+          {% else %}
+            mdi:power-plug-off
+          {% endif %}
+    
+    
