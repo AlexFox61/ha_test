@@ -5,8 +5,9 @@
           entity_id: remote.rm_mini
           device: television
           command:
-            - volume up
-            - volume down
+            # - volume up
+            # - volume down
+            - power
             
             
   tv_vup_broadlink:
