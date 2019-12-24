@@ -50,7 +50,7 @@ rest_command: !include includes/rest_command.yaml
 timer: !include includes/timer.yaml
 counter: !include includes/counter.yaml
 utility_meter: !include includes/utility_meter.yaml
-switch: !include includes/switch.yaml
+switch: !include_dir_merge_list includes/switches
 
 
 telegram_bot:
@@ -105,6 +105,6 @@ air_quality:
     
 remote:
   - platform: broadlink
-    host: 192.168.0.247
-    mac: 24:DF:A7:42:C2:8D
+    host: 192.168.0.246
+    mac: '24:DF:A7:42:C2:8D'
     name: rm_mini

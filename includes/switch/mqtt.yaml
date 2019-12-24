@@ -1,24 +1,3 @@
-  - platform: xiaomi_miio
-    name: wifi_6port
-    host: 192.168.0.95
-    token: 82dc0e63cd05e7d74b9065c0bc9e0556
-    model: zimi.powerstrip.v2
-    
-  - platform: xiaomi_miio
-    name: wifi_3usb
-    host: 192.168.0.101
-    token: 29eae10bd4d757528e31dc6a783ec2ee
-    model: qmi.powerstrip.v1
-
-  - platform: mqtt
-    name: test_mqtt
-    icon: mdi:light-switch
-    # state_topic: "switches/test_mqtt"
-    command_topic: "switches/test_mqtt/set"
-    payload_on: "ON"
-    payload_off: "OFF"
-    retain: true
-    
   - platform: template
     switches:
       test_mqtt:
@@ -40,5 +19,3 @@
           {% else %}
             mdi:power-plug-off
           {% endif %}
-    
-    
