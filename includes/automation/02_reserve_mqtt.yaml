@@ -1,5 +1,5 @@
 - alias: telegramm_reserve_system
-  initial_state: true
+  initial_state: false
   trigger:
   - platform: state
     entity_id: sensor.reserve_system_send
