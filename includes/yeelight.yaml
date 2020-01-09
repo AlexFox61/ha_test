@@ -20,6 +20,7 @@
       192.168.0.108:
         name: yeelight_05_ceiling1
         transition: 1000
+        nightlight_switch_type: light
         model: ceiling4
       192.168.0.109:
         name: yeelight_05_ceiling2
@@ -33,6 +34,10 @@
         name: yeelight_05_bedside2
         transition: 1000
         model: bslamp1  
+      192.168.0.214:
+        name: yeelight_05_panel
+        transition: 1000
+        nightlight_switch_type: light
 ## Ванная
       192.168.0.112:
         name: yeelight_06_ceiling

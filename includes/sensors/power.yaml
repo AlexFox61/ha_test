@@ -1,30 +1,22 @@
-## ZigBee
   - platform: template
     sensors:
       load_158d0001fa2934:
-        friendly_name: 'zigbee'
-        value_template: "{{ (state_attr('switch.plug_158d0001fa2934', 'load_power') * 0.001) | round(6) }}"
-        icon_template: mdi:flash
-        unit_of_measurement: 'кВт'
-        entity_id: switch.plug_158d0001fa2934
-        
-## Wi-fi        
-  - platform: template
-    sensors:
-      load_wifi_6port:
-        friendly_name: 'wi-fi'
-        value_template: "{{ (state_attr('switch.wifi_6port', 'load_power') * 0.001) | round(6)  }}"
-        icon_template: mdi:flash
-        unit_of_measurement: 'кВт'
-        entity_id: switch.wifi_6port
-
-  - platform: template
-    sensors:
-      load_wifi_3usb:
-        friendly_name: 'Xiaomi wi-fi 3+3 USB'
-        value_template: "{{ state_attr('switch.wifi_3usb', 'load_power') }}"
+        friendly_name: 'Zigbee'
+        value_template: "{{ state_attr('switch.plug_158d0001fa2934', 'load_power') }}"
         icon_template: mdi:flash
         unit_of_measurement: 'Вт'
-        entity_id: switch.wifi_3usb
+        entity_id: switch.plug_158d0001fa2934
+
+  - platform: mqtt
+    state_topic: "power/158d0001fa2934/today"
+    name: 'mqtt_power_today_158d0001fa2934'
+    unit_of_measurement: 'кВт⋅ч'
+
+  - platform: mqtt
+    state_topic: "power/158d0001fa2934/month"
+    name: 'mqtt_power_month_158d0001fa2934'
+    unit_of_measurement: 'кВт⋅ч'
+
+
 
 

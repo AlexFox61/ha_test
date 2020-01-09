@@ -21,3 +21,6 @@ sensor.alex_sleep:
 sensor.alex_heartrate:
  friendly_name: Пульс - 
  unit_of_measurement: уд/мин
+ 
+timer.backup:
+ friendly_name: Таймер резервного копирования 

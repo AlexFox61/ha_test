@@ -36,23 +36,6 @@ tts:
   - platform: google_translate
 
 
-#Вынос в папки
-sensor: !include_dir_merge_list includes/sensors
-binary_sensor: !include_dir_merge_list includes/bin_sensor
-automation: !include_dir_merge_list includes/automation
-script: !include_dir_merge_named includes/scripts
-
-#Вынос в файлы
-yeelight: !include includes/yeelight.yaml
-recorder: !include includes/recorder.yaml
-notify: !include includes/notify.yaml
-rest_command: !include includes/rest_command.yaml
-timer: !include includes/timer.yaml
-counter: !include includes/counter.yaml
-utility_meter: !include includes/utility_meter.yaml
-switch: !include_dir_merge_list includes/switches
-
-
 telegram_bot:
   - platform: polling
     api_key: !secret api_key_72
@@ -83,19 +66,13 @@ mqtt:
   discovery_prefix: homeassistant
   username: mqtt
   password: mqtt
-
-
-camera:
-  - platform: onvif
-    host: 192.168.0.128
-    name: reolink_c2
-    username: !secret reolink_name
-    password: !secret reolink_pass
-    port: 8000
-
-  - platform: ffmpeg
-    name: xiaofang
-    input: -rtsp_transport tcp -i rtsp://192.168.0.127:8554/unicast
+  
+# mqtt_statestream:
+#   base_topic: instance/test
+#   include:
+#     entities:
+#       - sensor.last_boot_custom
+#       - sensor.online_custom
 
 air_quality:
   - platform: xiaomi_miio
@@ -104,7 +81,33 @@ air_quality:
     token: 5233595a56594a4e55724b4967513542
     
 remote:
-  - platform: broadlink
-    host: 192.168.0.246
-    mac: '24:DF:A7:42:C2:8D'
-    name: rm_mini
+#   - platform: broadlink
+#     host: 192.168.0.246
+#     mac: '24:DF:A7:42:C2:8D'
+#     name: rm_mini
+
+  - platform: xiaomi_miio
+    name: xiaomi_base
+    host: 192.168.0.135
+    token: db472a45b4f1913439abaab3f7ff6356
+    slot: 3
+    timeout: 30
+    hidden: false
+    
+#Вынос в папки
+sensor: !include_dir_merge_list includes/sensors
+binary_sensor: !include_dir_merge_list includes/bin_sensor
+automation: !include_dir_merge_list includes/automation
+switch: !include_dir_merge_list includes/switches
+script: !include_dir_merge_named includes/scripts
+
+#Вынос в файлы
+mqtt_statestream: !include includes/mqtt_statestream.yaml
+yeelight: !include includes/yeelight.yaml
+camera: !include includes/camera.yaml
+recorder: !include includes/recorder.yaml
+notify: !include includes/notify.yaml
+rest_command: !include includes/rest_command.yaml
+timer: !include includes/timer.yaml
+counter: !include includes/counter.yaml
+utility_meter: !include includes/utility_meter.yaml

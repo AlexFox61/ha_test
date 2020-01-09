@@ -1,61 +1,53 @@
-## ZigBee
-  daily_158d0001fa2934:
+## Расчет на 1 тариф
+  one_daily_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: daily
     tariffs:
       - day
 
-
-  monthly_158d0001fa2934:
+  one_monthly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: monthly
     tariffs:
       - day
 
-    
-  yearly_158d0001fa2934:
+  one_yearly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: yearly
     tariffs:
       - day
 
-
-## Wi-fi 
-  daily_wifi_6port:
-    source: sensor.load_wifi_6port
+## Расчет на 3 тарифа
+  three_daily_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
     cycle: daily
     tariffs:
       - day
       - evening
       - night
     
-  monthly_wifi_6port:
-    source: sensor.load_wifi_6port
+  three_monthly_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
     cycle: monthly
     tariffs:
       - day
       - evening
       - night
     
-  yearly_wifi_6port:
-    source: sensor.load_wifi_6port
+  three_yearly_158d0001fa2934:
+    source: sensor.load_158d0001fa2934
     cycle: yearly
     tariffs:
       - day
       - evening
       - night
       
-## compare
-  daily_compare_158d0001fa2934:
+## Сверка с mqtt
+
+  daily_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: daily
 
-  week_compare_158d0001fa2934:
-    source: sensor.load_158d0001fa2934
-    cycle: weekly
-
-
-  monthly_compare_158d0001fa2934:
+  monthly_158d0001fa2934:
     source: sensor.load_158d0001fa2934
     cycle: monthly
-

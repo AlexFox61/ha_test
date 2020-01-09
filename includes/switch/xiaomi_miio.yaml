@@ -1,0 +1,5 @@
+  - platform: xiaomi_miio
+    name: wifi_3usb
+    host: 192.168.0.101
+    token: 29eae10bd4d757528e31dc6a783ec2ee
+    model: qmi.powerstrip.v1

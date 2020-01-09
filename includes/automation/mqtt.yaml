@@ -1,5 +1,5 @@
-## Тестовая запись времени
-- alias: mqtt_time
+- id: Тестовая запись времени
+  alias: mqtt_time
   initial_state: true
   trigger:
    - platform: time_pattern

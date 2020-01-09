@@ -4,9 +4,11 @@
   - platform: homeassistant
     event: start
   action:  
-    - delay: 00:00:10
-    - service: script.turn_on
-      entity_id: script.telegramm_start
+    - service: mqtt.publish
+      data_template:
+         topic: "notification/info"
+         payload_template: '031'
+         retain: true
       
 - alias: 00_backup_everyday
   initial_state: true
